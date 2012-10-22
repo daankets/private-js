@@ -1,0 +1,26 @@
+{
+  "name": "blackbit-node-common",
+  "version": "0.1.0",
+  "description": "Blackbit Consulting - Common node classes and utilities",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "test/tests.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@git.assembla.com:blackbit-node-common.git"
+  },
+  "keywords": [
+    "common",
+    "node",
+    "classes",
+    "utilities",
+    "blackbit",
+    "consulting"
+  ],
+  "devDependencies" : {
+      "nodeunit" : "0.7.x"
+  },
+  "author": "Daan Kets",
+  "license": "private"
+}
