@@ -39,7 +39,9 @@ var testWithPrivates = function (test) {
 
     var testObject = new TestClass('hello');
     test.equal(testObject.toString(), 'HELLO');
+    test.equal(JSON.stringify(testObject), '{}');
     test.done();
+
 
 };
 
