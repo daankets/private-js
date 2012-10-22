@@ -6,29 +6,29 @@
  * To change this template use File | Settings | File Templates.
  */
 
-var WithPrivates = require('../lib/inheritance').WithPrivates;
+var Private = require('../lib/inheritance').Private;
 
 var TestClass = function (value) {
     "use strict";
 
-    WithPrivates.call(this);
+    Private.call(this);
     this.setValue(value);
 };
-TestClass.prototype = Object.create(WithPrivates.prototype);
+TestClass.prototype = Object.create(Private.prototype);
 
-WithPrivates.addPrivateMethod(TestClass.prototype, 'capitalize', function (privates, someString) {
+TestClass.prototype.addPrivateMethod('capitalize', function (privates, someString) {
     "use strict";
 
     return someString.toUpperCase();
 });
 
-WithPrivates.addPublicMethod(TestClass.prototype, 'setValue', function (privates, value) {
+TestClass.prototype.setValue = Private.access(function (privates, value) {
     "use strict";
 
     return (privates.value = value);
 });
 
-WithPrivates.addPublicMethod(TestClass.prototype, 'toString', function (privates) {
+TestClass.prototype.toString = Private.access(function (privates) {
     "use strict";
 
     return privates.capitalize(privates.value);
