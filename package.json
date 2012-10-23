@@ -1,6 +1,6 @@
 {
     "name" : "private-js",
-    "version" : "1.0.0",
+    "version" : "1.0.1",
     "description" : "Clean 'private' support for JavaScript. This library contains classes and utilities that will allow you to add 'privates' to your JavaScript classes in a clean, spec-compliant way. This library will work both within a browser environment and node.js. It was created in order to make it easier for a distributed team of developers to handle privates in a consistent way. The library is based on JavaScript prototypes in order to avoid repetitive creation of functions.",
     "main" : "lib/index.js",
     "directories" : {
@@ -13,7 +13,7 @@
     },
     "repository" : {
         "type" : "git",
-        "url" : "git@git.assembla.com:private-js.git"
+        "url" : "git@github.com:daankets/private-js.git"
     },
     "keywords" : [
         "node",
@@ -24,7 +24,13 @@
     "devDependencies" : {
         "nodeunit" : "0.7.x"
     },
-    "author" : "Daan Kets <daankets@blackbit.be>",
+    "author" : "Daan Kets",
+    "maintainers": [
+        {
+            "name": "Daan Kets",
+            "url": "https://github.com/daankets"
+        }
+    ],
     "licenses" : {
         "type":"Creative Commons Attribution-ShareAlike 3.0 Unported License",
         "url":"http://creativecommons.org/licenses/by-sa/3.0/"
