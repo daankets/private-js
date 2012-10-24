@@ -7,9 +7,7 @@
  */
 
 // Import the Private class/function
-var Private = require('../lib/index').Private;
-var PRIVATES_VAR_NAME = '_privates';
-var THIS_VAR_NAME = '_this';
+var Private = require('../lib/private').Private;
 
 // Define a TestClass that inherits from Private.
 var TestClass = function (value) {
@@ -42,7 +40,7 @@ var testPrivateFunction = function (test) {
     "use strict";
 
     var object = {};
-    object[PRIVATES_VAR_NAME] = "test";
+    object[Private.PRIVATES_VAR_NAME] = "test";
 
     test.equals(Private(object), "test");
     test.done();
@@ -52,7 +50,7 @@ var testPrivateConstructor = function (test) {
     "use strict";
 
     var testObject = new Private();
-    test.ok(Private(testObject)[THIS_VAR_NAME] === testObject);
+    test.ok(Private(testObject)[Private.THIS_PRIVATE_VAR_NAME] === testObject);
     test.done();
 };
 
@@ -60,7 +58,7 @@ var testPrivateConstructorExtension = function (test) {
     "use strict";
 
     var testObject = new TestClass('test');
-    test.ok(Private(testObject)[THIS_VAR_NAME] === testObject);
+    test.ok(Private(testObject)[Private.THIS_PRIVATE_VAR_NAME] === testObject);
     //test.ok(Private(testObject)['value'] === 'test');
     test.done();
 };
@@ -113,10 +111,10 @@ var testEnable = function (test) {
     };
     Private.enable(MyClass.prototype);
 
-    test.ok(Private(MyClass.prototype)[THIS_VAR_NAME] === MyClass.prototype);
+    test.ok(Private(MyClass.prototype)[Private.THIS_PRIVATE_VAR_NAME] === MyClass.prototype);
 
     myObject = new MyClass();
-    test.equal(Private(myObject)[THIS_VAR_NAME], myObject);
+    test.equal(Private(myObject)[Private.THIS_PRIVATE_VAR_NAME], myObject);
     test.done();
 };
 
