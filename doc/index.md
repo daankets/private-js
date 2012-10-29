@@ -11,19 +11,21 @@ defining new classes with private member support.
 
 You do NOT necessarily need to extend though, you may just 'enable' a prototype or object with private support as well.
 
-- Instance:
-`var objectWithPrivates = new Private();`
-- Extension:
-`var MyClass = function(){
-    Private.call(this);
-};
-MyClass.prototype = Object.create(Private.prototype);
-var myObject = new MyClass();`
-- Enable:
-`var MyClass = function(){
-    Private.enable(this);
-};
-Private.enable(MyClass.prototype);`
+- **Instance:** `var objectWithPrivates = new Private();`
+- **Extension:**
+
+        var MyClass = function(){
+            Private.call(this);
+        };
+        MyClass.prototype = Object.create(Private.prototype);
+        var myObject = new MyClass();
+
+- **Enable:**
+
+        var MyClass = function(){
+            Private.enable(this);
+        };
+        Private.enable(MyClass.prototype);
 
 The **function** style is used for retrieving the private members object for an instance (or prototype). This function is
 used internally for injection as well:
@@ -31,8 +33,7 @@ used internally for injection as well:
 Note that if you use **Private.enable**, you _SHOULD_ apply this method to the prototype and you **MUST** apply this
 method to the object (preferably within or the object constructor).
 
-- Function:
-`var privates = Private(this); // Store a reference to the privates into 'privates'`
+- **Function:** `var privates = Private(this); // Store a reference to the privates into 'privates'`
 
 How does it work?
 -----------------
@@ -58,10 +59,19 @@ The **preferred** way of using this library is by extending a class:
     MyClass.prototype = Object.create(Private.prototype); // Extend the prototype of Private
 
 The advantage is that upon construction, the _privates object of your instance is automatically provisioned with a
-property `_self': this._privates._self = this;`
+property '_this': `this._privates._this = this;`
 
 This property is used by the injection mechanism for private methods in order to be able to swap the 'this' argument
 from the reference to _privates to the reference of the owning instance.
+
+You may also pass initialisation values to the super constructor. The attributes of the passed object will be copied to the privates of the new instance:
+
+    var MyClass = function(){
+        Private.call(this,{name:'Some name', value: 4}); // Call the super constructor, and pass initial privates.
+    };
+    MyClass.prototype = Object.create(Private.prototype); // Extend the prototype of Private
+
+This way, you do **not** have to call `Private(this).name = 'Some name'` and `Private(this).value = 4;` manually.
 
 Enabling
 --------
@@ -84,8 +94,8 @@ This may prove to be convenient for enabling singletons that are otherwise defin
 Public methods
 --------------
 
-In order to make it easy to declare public methods, that do not have to use '**Private(this)**' all over, the Private class
-exposes a static function '**hasAccess(_function_)**' that will wrap a function with the necessary code for injecting the
+In order to make it easy to declare public methods, that do not have to use '**Private(**this**)**' all over, the Private class
+exposes a static function '**hasAccess(**function**)**' that will wrap a function with the necessary code for injecting the
 _privates member upon invocation as the first parameter:
 
     // Declare MyClass, which extends Private.
@@ -132,4 +142,3 @@ If we extend the example from above:
 
         var myInstance = new MyClass(2);
         console.log(myInstance.getSomeProperty());
-
