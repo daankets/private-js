@@ -118,6 +118,12 @@ var testEnable = function (test) {
     test.done();
 };
 
+var testInitialValues = function (test) {
+    var withPrivates = new Private({hello : 'World'});
+    test.equal(Private(withPrivates).hello, 'World');
+    test.done();
+};
+
 module.exports = {
     testPrivateFunction : testPrivateFunction,
     testPrivateConstructor : testPrivateConstructor,
@@ -125,5 +131,6 @@ module.exports = {
     testPrivateVariable : testPrivateVariable,
     testPublicMethod : testPublicMethod,
     testPrivateMethod : testPrivateMethod,
-    testEnable : testEnable
+    testEnable : testEnable,
+    testInitialValues : testInitialValues
 };
