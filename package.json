@@ -1,6 +1,6 @@
 {
     "name" : "private-js",
-    "version" : "1.0.4",
+    "version" : "1.0.5",
     "description" : "Clean 'private' support for JavaScript. This library contains classes and utilities that will allow you to add 'privates' to your JavaScript classes in a clean, spec-compliant way. This library will work both within a browser environment and node.js. It was created in order to make it easier for a distributed team of developers to handle privates in a consistent way. The library is based on JavaScript prototypes in order to avoid repetitive creation of functions.",
     "main" : "lib/private.js",
     "directories" : {
