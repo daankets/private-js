@@ -4,6 +4,7 @@ Private.JS change log
 1.0.5 -> 1.0.6
 --------------
 - **2012-11-03 - Bug fix:** prevents the accidental invalid re-use of the privates instance of the Private prototype by subclasses.
+
 1.0.4 -> 1.0.5
 --------------
 
